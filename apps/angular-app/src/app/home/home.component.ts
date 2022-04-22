@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { common, common2, WelcomeMessage } from '@mono-repo/common';
+import { HomeService } from './home.service';
 // import { WelcomeMessage } from '@interfaces/WelcomeMessage';
 
 @Component({
@@ -15,9 +16,12 @@ export class HomeComponent implements OnInit {
     message: `Hello`
   };
 
-  constructor() {}
+  constructor(
+    private homeService: HomeService
+  ) {}
 
   ngOnInit(): void {
+    this.homeService.get('angular-app');
     console.log('common', common());
     console.log('common2', common2());
   }

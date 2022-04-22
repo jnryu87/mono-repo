@@ -22,6 +22,7 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
     "@nrwl/angular": "^13.10.0",
+    "axios": "^0.26.1",
     "core-js": "^3.6.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
