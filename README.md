@@ -5,11 +5,11 @@
 
 # Angular app
 ```
-npx nx serve angular-app
+yarn nx serve angular-app
 ```
 # React app
 ```
-npx nx serve react-app --port 4300
+yarn nx serve react-app --port 4300
 ```
 
 This project was generated using [Nx](https://nx.dev).
