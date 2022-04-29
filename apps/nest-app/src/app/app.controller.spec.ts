@@ -1,3 +1,4 @@
+import { common, common2 } from '@mono-repo/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { AppController } from './app.controller';
@@ -16,8 +17,10 @@ describe('AppController', () => {
   describe('getData', () => {
     it('should return "Welcome to nest-app!"', () => {
       const appController = app.get<AppController>(AppController);
-      expect(appController.getData()).toEqual({
-        message: 'Welcome to nest-app!',
+      const appName = 'appName';
+      expect(appController.getData(appName)).toEqual({
+        id: `${common()} - ${common2()}`,
+        message: `Hello ${appName} from Nest app`
       });
     });
   });
