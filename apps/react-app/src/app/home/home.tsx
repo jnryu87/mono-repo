@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 
-import { common, common2, WelcomeMessage } from "@mono-repo/common";
+import { WelcomeMessage } from "@mono-repo/common";
+import { getHome } from "@mono-repo/api";
 
 /* eslint-disable-next-line */
 export interface HomeProps {}
 
 export function Home(props: HomeProps) {
-  const [message, setMessage] = useState<WelcomeMessage>({
-    id: 'React',
-    message: 'Hallo'
-  });
+  const [message, setMessage] = useState<WelcomeMessage>();
 
   useEffect(() => {
-    console.log('common', common());
-    console.log('common2', common2());
+    const getData = async (): Promise<void> => {
+      setMessage(await getHome('React'));
+    };    
+
+    getData();
   }, []);
 
   return (
-    <p>{message.id} - {message.message}</p>
+    <p>{message?.message}</p>
   );
 }
 
