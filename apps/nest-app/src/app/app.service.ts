@@ -4,10 +4,10 @@ import { common, common2, WelcomeMessage } from '@mono-repo/common';
 
 @Injectable()
 export class AppService {
-  getData(): WelcomeMessage {
+  getData(appName: string): WelcomeMessage {
     return {
       id: `${common()} - ${common2()}`,
-      message: 'Nest app'
+      message: `Hello ${appName} from Nest app`
     };
   }
 }

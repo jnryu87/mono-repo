@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { common, common2, WelcomeMessage } from '@mono-repo/common';
+import { Observable } from 'rxjs';
+
 import { HomeService } from './home.service';
 // import { WelcomeMessage } from '@interfaces/WelcomeMessage';
 
@@ -11,17 +13,15 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  public message: WelcomeMessage = {
-    id: 'Angular',
-    message: `Hello`
-  };
+  public message!: Observable<WelcomeMessage>;
+
 
   constructor(
     private homeService: HomeService
   ) {}
 
   ngOnInit(): void {
-    this.homeService.get('angular-app');
+    this.message = this.homeService.get('Angular');
     console.log('common', common());
     console.log('common2', common2());
   }
