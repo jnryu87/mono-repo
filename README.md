@@ -17,6 +17,46 @@ yarn nx serve react-app --port 4300
 yarn nx serve nest-app
 ```
 
+# Build app
+1. Build a base image
+```
+docker build -t mono-repo-base .
+```
+
+2. Build a module
+
+Angular
+```
+docker build -f ./apps/angular-app/Dockerfile -t angular-app .
+```
+
+React
+```
+docker build -f ./apps/react-app/Dockerfile -t react-app .
+```
+
+Nestjs
+```
+docker build -f ./apps/nest-app/Dockerfile -t nest-app .
+```
+
+3. Test run for the image
+
+Angular
+```
+docker run -p 4200:80 angular-app
+```
+
+React
+```
+docker run -p 4300:80 react-app
+```
+
+NestJs
+```
+docker run --init -p 3333:3333 nest-app
+```
+
 This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
