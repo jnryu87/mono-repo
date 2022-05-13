@@ -30,15 +30,34 @@ Angular
 docker build -f ./apps/angular-app/Dockerfile -t angular-app .
 ```
 
+local build
+```
+docker build -f ./apps/angular-app/Dockerfile -t localhost:32000/angular-app .
+docker push localhost:32000/angular-app
+```
+
 React
 ```
 docker build -f ./apps/react-app/Dockerfile -t react-app .
+```
+
+local build
+```
+docker build -f ./apps/react-app/Dockerfile -t localhost:32000/react-app .
+docker push localhost:32000/react-app
 ```
 
 Nestjs
 ```
 docker build -f ./apps/nest-app/Dockerfile -t nest-app .
 ```
+
+local build
+```
+docker build -f ./apps/nest-app/Dockerfile -t localhost:32000/nest-app .
+docker push localhost:32000/nest-app
+```
+
 
 3. Test run for the image
 

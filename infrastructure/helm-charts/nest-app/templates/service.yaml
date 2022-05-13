@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nest-app.fullname" . }}
+  labels:
+    {{- include "nest-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: 3333
+      targetPort: 3333
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "nest-app.selectorLabels" . | nindent 4 }}
