@@ -7,8 +7,9 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: 3333
+    - port: {{ .Values.service.port }}
       targetPort: 3333
+      nodePort: {{ .Values.service.nodePort }}
       protocol: TCP
       name: http
   selector:
