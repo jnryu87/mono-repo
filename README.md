@@ -80,6 +80,7 @@ docker run --init -p 3333:3333 nest-app
 4. Local deployment
 ```bash
 infrastructure/helm-charts$ helm install angular-app ./angular-app -n mono-repo
+infrastructure/helm-charts$ helm install react-app ./react-app -n mono-repo
 infrastructure/helm-charts$ helm install nest-app ./nest-app -n mono-repo
 ```
 
