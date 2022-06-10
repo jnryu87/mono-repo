@@ -22,7 +22,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = this.homeService.get('Angular');
-    console.log('common', common());
-    console.log('common2', common2());
   }
 }
