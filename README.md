@@ -36,6 +36,12 @@ docker build -f ./apps/angular-app/Dockerfile -t localhost:32000/angular-app .
 docker push localhost:32000/angular-app
 ```
 
+docker hub public registry
+```
+docker build -f ./apps/angular-app/Dockerfile -t jnryu87/nx-angular .
+docker push jnryu87/nx-angular
+```
+
 React
 ```
 docker build -f ./apps/react-app/Dockerfile -t react-app .
@@ -47,6 +53,13 @@ docker build -f ./apps/react-app/Dockerfile -t localhost:32000/react-app .
 docker push localhost:32000/react-app
 ```
 
+docker hub public registry
+```
+docker build -f ./apps/angular-app/Dockerfile -t jnryu87/nx-react .
+docker push jnryu87/nx-react
+```
+
+
 Nestjs
 ```
 docker build -f ./apps/nest-app/Dockerfile -t nest-app .
@@ -56,6 +69,12 @@ local build
 ```
 docker build -f ./apps/nest-app/Dockerfile -t localhost:32000/nest-app .
 docker push localhost:32000/nest-app
+```
+
+docker hub public registry
+```
+docker build -f ./apps/angular-app/Dockerfile -t jnryu87/nx-nest .
+docker push jnryu87/nx-nest
 ```
 
 
