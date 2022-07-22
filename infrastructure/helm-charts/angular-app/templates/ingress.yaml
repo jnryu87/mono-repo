@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: angular-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  # ingressClassName: nginx-example
+  defaultBackend:
+    service:
+      name: angular
+      port:
+        number: 80
+  # rules:
+  # - http:
+  #     paths:
+  #     - path: /angular
+  #       pathType: Prefix
+  #       backend:
+  #         service:
+  #           name: angular
+  #           port:
+  #             number: 80

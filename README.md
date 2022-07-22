@@ -103,6 +103,17 @@ infrastructure/helm-charts$ helm install react-app ./react-app -n mono-repo
 infrastructure/helm-charts$ helm install nest-app ./nest-app -n mono-repo
 ```
 
+5. Using Ingress
+
+Angular app
+```
+export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=angular-app,app.kubernetes.io/instance=angular-app" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit http://127.0.0.1:8080 to use your application"
+kubectl --namespace mono-repo port-forward $POD_NAME 8080:$CONTAINER_PORT
+```
+
+
 This project was generated using [Nx](https://nx.dev).
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
