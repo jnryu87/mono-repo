@@ -113,6 +113,22 @@ echo "Visit http://127.0.0.1:8080 to use your application"
 kubectl --namespace mono-repo port-forward $POD_NAME 8080:$CONTAINER_PORT
 ```
 
+React app
+```
+export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=react-app,app.kubernetes.io/instance=react-app" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit http://127.0.0.1:8081 to use your application"
+kubectl --namespace mono-repo port-forward $POD_NAME 8081:$CONTAINER_PORT
+```
+
+Nest app
+```
+export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=nest-app,app.kubernetes.io/instance=nest-app" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit http://127.0.0.1:8082 to use your application"
+kubectl --namespace mono-repo port-forward $POD_NAME 8082:$CONTAINER_PORT
+```
+
 
 This project was generated using [Nx](https://nx.dev).
 
