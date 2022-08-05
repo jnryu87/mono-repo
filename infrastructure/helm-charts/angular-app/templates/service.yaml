@@ -12,7 +12,7 @@ spec:
       {{- if eq .Values.service.type "NodePort" }}
       nodePort:
         {{ .Values.service.nodePort }}
-      {{- end }}      
+      {{- end }}     
       protocol: TCP
       name: http
   selector:
