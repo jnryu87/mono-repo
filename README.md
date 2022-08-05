@@ -83,6 +83,7 @@ docker push jnryu87/nx-nest
 Angular
 ```
 docker run -p 4200:80 angular-app
+docker run -p 4200:80 nx-angular
 ```
 
 React
@@ -97,6 +98,14 @@ docker run --init -p 3333:3333 nest-app
 
 
 4. Local deployment
+by service type
+
+```
+NodePort: values.yaml
+LoadBalancer: values-lb.yaml
+Ingress: values-ingress.yaml
+```
+
 ```bash
 infrastructure/helm-charts$ helm install angular-app ./angular-app -n mono-repo
 infrastructure/helm-charts$ helm install react-app ./react-app -n mono-repo

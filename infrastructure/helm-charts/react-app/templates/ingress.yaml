@@ -1,16 +1,19 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "angular-app.fullname" . -}}
+{{- $svcPort := .Values.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: react-ingress
+  name: {{ $fullName }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   # ingressClassName: nginx-example
   defaultBackend:
     service:
-      name: react
+      name: {{ $fullName }}
       port:
-        number: 80
+        number: {{ $svcPort }}
   # rules:
   # - http:
   #     paths:
@@ -21,3 +24,4 @@ spec:
   #           name: angular
   #           port:
   #             number: 80
+{{- end }}
