@@ -7,8 +7,6 @@ import { environment } from './environments/environment';
 
 const basename = environment.basename;
 
-console.log('basename', basename);
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
