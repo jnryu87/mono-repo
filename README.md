@@ -73,7 +73,7 @@ docker push localhost:32000/nest-app
 
 docker hub public registry
 ```
-docker build -f ./apps/angular-app/Dockerfile -t jnryu87/nx-nest .
+docker build -f ./apps/nest-app/Dockerfile -t jnryu87/nx-nest .
 docker push jnryu87/nx-nest
 ```
 
@@ -94,7 +94,8 @@ docker run -p 4300:80 jnryu87/nx-react
 
 NestJs
 ```
-docker run --init -p 3333:3333 nest-app
+docker run -p 3333:80 nest-app
+docker run -p 3333:80 jnryu87/nx-nest
 ```
 
 
@@ -117,6 +118,7 @@ local k8s
 ```bash
 helm install angular-app ./angular-app -n mono-repo -f ./angular-app/values-ingress.yaml
 helm install react-app ./react-app -n mono-repo -f ./react-app/values-ingress.yaml
+helm install nest-app ./nest-app -n mono-repo -f ./nest-app/values-ingress.yaml
 ```
 
 5. Using Ingress
