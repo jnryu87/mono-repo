@@ -14,12 +14,14 @@ async function bootstrap() {
   const port = environment.port;
 
   app.enableCors();
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
 
   await app.listen(port);
+
+  console.log('env', environment.production);
+  console.log('port', environment.port);
+
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
+    `🚀 Application is running on: http://localhost:${port}`
   );
 }
 

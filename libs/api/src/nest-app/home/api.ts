@@ -5,7 +5,7 @@ import { backendUrl } from '../../config';
 
 export async function getHome(appName: string): Promise<WelcomeMessage> {
   try {
-    const response = await axios.get(`${backendUrl}/api`, { params: { appName }});
+    const response = await axios.get(`${backendUrl}/nest`, { params: { appName }});
     return response.data;
   } catch(e) {
     throw e;

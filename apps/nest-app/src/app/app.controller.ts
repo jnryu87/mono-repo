@@ -3,7 +3,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { WelcomeMessage } from '@mono-repo/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('nest')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 

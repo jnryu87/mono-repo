@@ -95,7 +95,7 @@ docker run -p 4300:80 jnryu87/nx-react
 NestJs
 ```
 docker run -p 3333:80 nest-app
-docker run -p 3333:80 jnryu87/nx-nest
+docker run -it --init -p 8080:80 jnryu87/nx-nest
 ```
 
 
