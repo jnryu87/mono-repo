@@ -55,7 +55,7 @@ docker push localhost:32000/react-app
 
 docker hub public registry
 ```
-docker build -f ./apps/angular-app/Dockerfile -t jnryu87/nx-react .
+docker build -f ./apps/react-app/Dockerfile -t jnryu87/nx-react .
 docker push jnryu87/nx-react
 ```
 
@@ -73,7 +73,7 @@ docker push localhost:32000/nest-app
 
 docker hub public registry
 ```
-docker build -f ./apps/angular-app/Dockerfile -t jnryu87/nx-nest .
+docker build -f ./apps/nest-app/Dockerfile -t jnryu87/nx-nest .
 docker push jnryu87/nx-nest
 ```
 
@@ -83,25 +83,70 @@ docker push jnryu87/nx-nest
 Angular
 ```
 docker run -p 4200:80 angular-app
+docker run -p 4200:80 jnryu87/nx-angular
 ```
 
 React
 ```
 docker run -p 4300:80 react-app
+docker run -p 4300:80 jnryu87/nx-react
 ```
 
 NestJs
 ```
-docker run --init -p 3333:3333 nest-app
+docker run -p 3333:80 nest-app
+docker run -it --init -p 8080:80 jnryu87/nx-nest
 ```
 
 
 4. Local deployment
+by service type
+
+```
+NodePort: values.yaml
+LoadBalancer: values-lb.yaml
+Ingress: values-ingress.yaml
+```
+
 ```bash
 infrastructure/helm-charts$ helm install angular-app ./angular-app -n mono-repo
 infrastructure/helm-charts$ helm install react-app ./react-app -n mono-repo
 infrastructure/helm-charts$ helm install nest-app ./nest-app -n mono-repo
 ```
+
+local k8s
+```bash
+helm install angular-app ./angular-app -n mono-repo -f ./angular-app/values-ingress.yaml
+helm install react-app ./react-app -n mono-repo -f ./react-app/values-ingress.yaml
+helm install nest-app ./nest-app -n mono-repo -f ./nest-app/values-ingress.yaml
+```
+
+5. Using Ingress
+
+Angular app
+```
+export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=angular-app,app.kubernetes.io/instance=angular-app" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit http://127.0.0.1:8080 to use your application"
+kubectl --namespace mono-repo port-forward $POD_NAME 8080:$CONTAINER_PORT
+```
+
+React app
+```
+export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=react-app,app.kubernetes.io/instance=react-app" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit http://127.0.0.1:8081 to use your application"
+kubectl --namespace mono-repo port-forward $POD_NAME 8081:$CONTAINER_PORT
+```
+
+Nest app
+```
+export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=nest-app,app.kubernetes.io/instance=nest-app" -o jsonpath="{.items[0].metadata.name}")
+export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+echo "Visit http://127.0.0.1:8082 to use your application"
+kubectl --namespace mono-repo port-forward $POD_NAME 8082:$CONTAINER_PORT
+```
+
 
 This project was generated using [Nx](https://nx.dev).
 

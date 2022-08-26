@@ -4,7 +4,7 @@ WORKDIR /app/builder
 
 COPY . .
 
-RUN yarn nx build angular-app
+RUN yarn nx build angular-app --prod --base-href /angular/
 
 FROM nginx:1.21.6
 

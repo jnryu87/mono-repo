@@ -13,6 +13,6 @@ export class HomeService {
 
   public get(appName: string): Observable<WelcomeMessage> {
     console.log('backendUrl', this.backendUrl);
-    return this.httpClient.get<WelcomeMessage>(`${this.backendUrl}/api`, { params: { appName }});
+    return this.httpClient.get<WelcomeMessage>(`${this.backendUrl}/nest`, { params: { appName }});
   }
 }
