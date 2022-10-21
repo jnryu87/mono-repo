@@ -147,6 +147,15 @@ echo "Visit http://127.0.0.1:8082 to use your application"
 kubectl --namespace mono-repo port-forward $POD_NAME 8082:$CONTAINER_PORT
 ```
 
+6. AKS
+
+Install nginx ingress
+```
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm repo update
+
+helm install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
+```
 
 This project was generated using [Nx](https://nx.dev).
 
