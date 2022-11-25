@@ -6,7 +6,9 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   annotations:
+    {{- with .Values.ingress.isCloud }}
     kubernetes.io/ingress.class: "nginx"
+    {{- end }}
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:

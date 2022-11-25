@@ -114,7 +114,14 @@ infrastructure/helm-charts$ helm install react-app ./react-app -n mono-repo
 infrastructure/helm-charts$ helm install nest-app ./nest-app -n mono-repo
 ```
 
-local k8s
+Local k8s
+```bash
+helm install angular-app ./angular-app -n mono-repo -f ./angular-app/values-ingress-local.yaml
+helm install react-app ./react-app -n mono-repo -f ./react-app/values-ingress-local.yaml
+helm install nest-app ./nest-app -n mono-repo -f ./nest-app/values-ingress-local.yaml
+```
+
+Cloud k8s
 ```bash
 helm install angular-app ./angular-app -n mono-repo -f ./angular-app/values-ingress.yaml
 helm install react-app ./react-app -n mono-repo -f ./react-app/values-ingress.yaml

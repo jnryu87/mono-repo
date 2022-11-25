@@ -1,11 +1,11 @@
-# Default values for angular-app.
+# Default values for react-app.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: jnryu87/nx-angular
+  repository: jnryu87/nx-react
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -41,19 +41,19 @@ service:
   port: 80
 
 ingress:
-  enabled: true  
+  enabled: true
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: myfriday.jnryu-lab
       paths:
-        - /angular
+        - /react
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-  isCloud: true
+  isCloud: false
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
