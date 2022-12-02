@@ -128,33 +128,17 @@ helm install react-app ./react-app -n mono-repo -f ./react-app/values-ingress.ya
 helm install nest-app ./nest-app -n mono-repo -f ./nest-app/values-ingress.yaml
 ```
 
-5. Using Ingress
-
-Angular app
+5. AKS
+(Local)
 ```
-export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=angular-app,app.kubernetes.io/instance=angular-app" -o jsonpath="{.items[0].metadata.name}")
-export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
-echo "Visit http://127.0.0.1:8080 to use your application"
-kubectl --namespace mono-repo port-forward $POD_NAME 8080:$CONTAINER_PORT
-```
-
-React app
-```
-export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=react-app,app.kubernetes.io/instance=react-app" -o jsonpath="{.items[0].metadata.name}")
-export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
-echo "Visit http://127.0.0.1:8081 to use your application"
-kubectl --namespace mono-repo port-forward $POD_NAME 8081:$CONTAINER_PORT
+az login
+(sudo) az aks install-cli
+az aks get-credentials --resource-group team-aliance-lab --name jnryu-mono-repo
+# Restart/reconnect to change context after this command
 ```
 
-Nest app
-```
-export POD_NAME=$(kubectl get pods --namespace mono-repo -l "app.kubernetes.io/name=nest-app,app.kubernetes.io/instance=nest-app" -o jsonpath="{.items[0].metadata.name}")
-export CONTAINER_PORT=$(kubectl get pod --namespace mono-repo $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
-echo "Visit http://127.0.0.1:8082 to use your application"
-kubectl --namespace mono-repo port-forward $POD_NAME 8082:$CONTAINER_PORT
-```
 
-6. AKS
+
 
 Install nginx ingress
 ```
