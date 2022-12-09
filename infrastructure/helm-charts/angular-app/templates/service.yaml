@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "angular-app.fullname" . }}
+  labels:
+    {{- include "angular-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 80
+      {{- if eq .Values.service.type "NodePort" }}
+      nodePort:
+        {{ .Values.service.nodePort }}
+      {{- end }}     
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "angular-app.selectorLabels" . | nindent 4 }}

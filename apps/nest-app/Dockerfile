@@ -13,6 +13,6 @@ WORKDIR /app
 COPY --from=builder /app/builder/dist/apps/nest-app ./
 COPY --from=builder /app/builder/node_modules ./node_modules
 
-EXPOSE 3333
+EXPOSE 80
 
 CMD ["node", "/app/main.js"]

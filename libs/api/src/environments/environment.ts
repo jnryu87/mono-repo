@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  port: 80
+  backendUrl: 'http://localhost:3333'
 };

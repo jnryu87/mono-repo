@@ -11,7 +11,7 @@
         "compiler": "babel",
         "outputPath": "dist/apps/react-app",
         "index": "apps/react-app/src/index.html",
-        "baseHref": "/",
+        "baseHref": "/react/",
         "main": "apps/react-app/src/main.tsx",
         "polyfills": "apps/react-app/src/polyfills.ts",
         "tsConfig": "apps/react-app/tsconfig.app.json",
@@ -29,6 +29,10 @@
             {
               "replace": "apps/react-app/src/environments/environment.ts",
               "with": "apps/react-app/src/environments/environment.prod.ts"
+            },
+            {
+              "replace": "libs/api/src/environments/environment.ts",
+              "with": "libs/api/src/environments/environment.prod.ts"
             }
           ],
           "optimization": true,
